@@ -17,13 +17,17 @@ document.querySelectorAll(".hero-actions .button").forEach((button) => {
 });
 
 const revealSelector = [
-  ".code-window",
+  ".signal-panel",
+  ".portrait-console",
+  ".metric-grid article",
+  ".command-card",
+  ".focus-board article",
   ".project-card",
-  ".timeline article",
+  ".experience-card",
   ".education-card",
-  ".skill-grid article",
+  ".skill-map article",
   ".cert-panel",
-  ".contact-layout",
+  ".contact-shell",
 ].join(", ");
 
 const revealItems = document.querySelectorAll(revealSelector);
@@ -47,7 +51,7 @@ const nativeReveal = () => {
 };
 
 const nativeHeroIntro = () => {
-  document.querySelectorAll(".hero .eyebrow, h1, .hero-copy, .hero-actions, .hero-tags").forEach((item, index) => {
+  document.querySelectorAll(".hero .eyebrow, h1, .hero-copy, .hero-actions, .signal-panel, .portrait-console, .metric-grid article").forEach((item, index) => {
     item.animate(
       [
         { opacity: 0, transform: "translateY(24px) scale(0.98)" },
@@ -70,14 +74,14 @@ if (motionAllowed) {
   import("https://cdn.jsdelivr.net/npm/motion@12.23.24/+esm")
     .then(({ animate, inView, scroll, stagger }) => {
       animate(
-        ".hero .eyebrow, h1, .hero-copy, .hero-actions, .hero-tags",
+        ".hero .eyebrow, h1, .hero-copy, .hero-actions, .signal-panel, .portrait-console, .metric-grid article",
         { opacity: [0, 1], y: [28, 0], filter: ["blur(8px)", "blur(0px)"] },
         { delay: stagger(0.08), duration: 0.8, easing: [0.16, 1, 0.3, 1] },
       );
 
       animate(
-        ".hero-portrait",
-        { opacity: [0, 0.88], x: [42, 0], rotate: [4, 0] },
+        ".portrait-frame img",
+        { opacity: [0, 1], x: [42, 0], rotate: [4, 0] },
         { duration: 1.05, delay: 0.22, easing: [0.16, 1, 0.3, 1] },
       );
 
@@ -105,7 +109,7 @@ if (motionAllowed) {
 if (cursorAllowed && motionAllowed) {
   const dot = document.querySelector(".cursor-dot");
   const halo = document.querySelector(".cursor-halo");
-  const interactiveSelector = "a, button, [data-scroll], .project-card, .skill-grid article, .contact-card a";
+  const interactiveSelector = "a, button, [data-scroll], .project-card, .skill-map article, .contact-card a, .experience-card";
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
